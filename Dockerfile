@@ -15,7 +15,7 @@ RUN apt-get update && \
 RUN mkdir -p /tmp/ccs && \
     mkdir -p /etc/udev/rules.d && \
     cd /tmp/ccs && \
-    wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip && \
+    wget -q https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip && \
     unzip CCS_20.2.0.00012_linux.zip && \
     cd CCS_20.2.0.00012_linux && \
     ./ccs_setup_20.2.0.00012.run --mode unattended --prefix /opt/ti --enable-components PF_C28 && \
