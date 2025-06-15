@@ -17,7 +17,7 @@ RUN mkdir -p /tmp/ccs && \
     wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip && \
     unzip CCS_20.2.0.00012_linux.zip && \
     cd CCS_20.2.0.00012_linux && \
-    ./ccs_setup_20.2.0.00012.run --help && \
+    ./ccs_setup_20.2.0.00012.run --prefix /opt/ti --mode unattended --enable-components PF_C28 && \
     cd / && \
     rm -rf /tmp/ccs
 
