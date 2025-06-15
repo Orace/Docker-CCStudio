@@ -13,6 +13,7 @@ RUN apt-get update && \
     apt-get clean
 
 RUN mkdir -p /tmp/ccs && \
+    midir -p /etc/udev/rules.d && \
     cd /tmp/ccs && \
     wget https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip && \
     unzip CCS_20.2.0.00012_linux.zip && \
