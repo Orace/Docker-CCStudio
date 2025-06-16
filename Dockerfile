@@ -13,7 +13,8 @@ RUN apt-get update && \
     apt-get clean
 
 RUN printf '%s\n' '#!/bin/sh' 'echo "Fake udev service."' 'exit 0' > /etc/init.d/udev && \
-    chmod +x /etc/init.d/udev
+    chmod +x /etc/init.d/udev && \
+    mkdir -p /etc/udev/rules.d
 
 RUN mkdir -p /tmp/ccs && \
     cd /tmp/ccs && \
