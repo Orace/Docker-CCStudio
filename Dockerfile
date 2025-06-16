@@ -22,8 +22,13 @@ RUN mkdir -p /tmp/ccs && \
     unzip CCS_20.2.0.00012_linux.zip && \
     cd CCS_20.2.0.00012_linux && \
     ./ccs_setup_20.2.0.00012.run --mode unattended --enable-components PF_C28 && \
+    mkdir -p /tmp/C2000 && \
+    cd /tmp/C2000 && \
+    wget -q pierre.lando.free.fr/TI/C2000Ware_5_05_00_00_setup.run && \
+    chmod +x C2000Ware_5_05_00_00_setup.run && \
+    ./C2000Ware_5_05_00_00_setup.run --mode unattended && \
     cd / && \
-    rm -rf /tmp/ccs
+    rm -rf /tmp/*.*
 
 # Default command
 CMD ["/bin/bash"]
