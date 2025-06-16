@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y \
         clang-format \
         git \
-        unzip \
+        tar \
         wget \
         curl \
         ca-certificates && \
@@ -14,16 +14,11 @@ RUN apt-get update && \
 
 RUN mkdir -p /tmp/ccs && \
     cd /tmp/ccs && \
-    wget -q https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/20.2.0/CCS_20.2.0.00012_linux.zip && \
-    unzip CCS_20.2.0.00012_linux.zip && \
-    cd CCS_20.2.0.00012_linux && \
-    ./ccs_setup_20.2.0.00012.run --mode unattended --prefix /opt/ti --enable-components PF_C28 || true && \
-    find /opt/ti/ccs/install_logs -type f -exec echo "=== {} ===" \; -exec cat {} \; && \
+    wget -q https://dr-download.ti.com/software-development/ide-configuration-compiler-or-debugger/MD-J1VdearkvK/12.8.1/CCS12.8.1.00005_linux-x64.tar.gz && \
+    tar xfz CCS12.8.1.00005_linux-x64.tar.gz && \
+    ./ccs_setup_12.8.1.00005.run --mode unattended --enable-components PF_MSP430,PF_MSP432,PF_MSPM0,PF_WCONN,PF_C28,PF_TM4C,PF_HERCULES,PF_SITARA,PF_SITARA_MCU,PF_OMAPL,PF_DAVINCI,PF_OMAP,PF_TDA_DRA,PF_C55,PF_C6000SC,PF_C66AK_KEYSTONE,PF_MMWAVE,PF_C64MC,PF_DIGITAL_POWER,PF_PGA --install-BlackHawk false --install-Segger false && \
     cd / && \
     rm -rf /tmp/ccs
-
-# Add CCS to PATH (optional)
-ENV PATH="/opt/ti/ccs/eclipse:${PATH}"
 
 # Default command
 CMD ["/bin/bash"]
