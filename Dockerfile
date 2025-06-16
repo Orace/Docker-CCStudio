@@ -12,12 +12,8 @@ RUN apt-get update && \
         ca-certificates && \
     apt-get clean
 
-RUN cat > /etc/init.d/udev << 'EOF'
-    #!/bin/sh
-    echo "Fake udev service."
-    exit 0
-    EOF
-RUN chmod +x /etc/init.d/udev
+RUN printf '%s\n' '#!/bin/sh' 'echo "Fake udev service."' 'exit 0' > /etc/init.d/udev && \
+    chmod +x /etc/init.d/udev
 
 RUN mkdir -p /tmp/ccs && \
     cd /tmp/ccs && \
