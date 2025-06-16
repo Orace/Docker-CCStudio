@@ -18,7 +18,7 @@ RUN mkdir -p /tmp/ccs && \
     unzip CCS_20.2.0.00012_linux.zip && \
     cd CCS_20.2.0.00012_linux && \
     ./ccs_setup_20.2.0.00012.run --mode unattended --prefix /opt/ti --enable-components PF_C28 || true && \
-    find /opt/ti/ccs/install_logs -type f -regextype posix-extended -regex '.*/[0-9]{14}$' -exec echo "=== {} ===" \; -exec cat {} \; || true && \
+    find /opt/ti/ccs/install_logs -type f -exec echo "=== {} ===" \; -exec cat {} \; && \
     cd / && \
     rm -rf /tmp/ccs
 
