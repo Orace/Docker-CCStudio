@@ -6,12 +6,18 @@ RUN apt-get update && \
     apt-get install -y \
         clang-format \
         git \
-        udev \
         unzip \
         wget \
         curl \
         ca-certificates && \
     apt-get clean
+
+RUN cat > /etc/init.d/udev << 'EOF'
+    #!/bin/sh
+    echo "Fake udev service."
+    exit 0
+    EOF
+RUN chmod +x /etc/init.d/udev
 
 RUN mkdir -p /tmp/ccs && \
     cd /tmp/ccs && \
